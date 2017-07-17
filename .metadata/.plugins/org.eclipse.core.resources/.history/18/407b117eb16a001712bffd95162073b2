@@ -26,10 +26,5 @@ public class TeacherVO extends PersonVO {
 	public String printTea(){
 		return super.printPer()+"\t"+subject ;
 	}
-	
-	//오버라이딩
-	public String printPer(){
-		return super.printPer()+"\t"+subject ;
-	}
 
 }

@@ -32,10 +32,5 @@ public class StudentVO extends PersonVO{
 	public String printStu(){
 	    return super.printPer()+"\t"+this.getStuID();
 	    }
- 
-	@Override	
-	public String printPer(){
-	    return super.printPer()+"\t"+this.getStuID();
-	    }
-
+	
 }

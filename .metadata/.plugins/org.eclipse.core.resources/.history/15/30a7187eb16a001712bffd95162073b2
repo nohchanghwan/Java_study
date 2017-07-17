@@ -23,9 +23,4 @@ public class ManagerVO extends PersonVO{
 	public String printEmp(){
 		return super.printPer()+"\t"+dept ;
 	}
-	@Override
-	
-	public String printPer(){
-		return super.printPer()+"\t"+dept ;
-	}
 }
