@@ -1,0 +1,10 @@
+
+public class LoopExamMain {
+
+	public static void main(String[] args) {
+		
+		int sum = LoopExam.evenSum(1,100000);
+		System.out.println("Â¦¼öÀÇÇÕ"+sum);
+	}
+
+}

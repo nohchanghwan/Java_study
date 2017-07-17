@@ -1,0 +1,11 @@
+
+public class PersonMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub 
+		Person per = new Person();  //인스턴스 생성 해당클래스 이름
+		per.calAge(2017, 1993);
+		System.out.println(per);
+		
+	}
+}

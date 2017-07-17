@@ -1,0 +1,90 @@
+
+--0712
+--주요그룹함수
+
+[SUM]
+
+SELECT 	SUM(SALARY),SUM(DISTINCT SALARY)
+FROM 	EMPLOYEE
+WHERE 	DEPT_ID = '50' OR DEPT_ID IS NULL;
+
+
+[AVG]
+
+SELECT 	AVG(BONUS_PCT) AS 기본평균,
+		AVG(DISTINCT BONUS_PCT) AS 중복제거평균,
+		AVG(NVL(BONUS_PCT,0)) AS NULL포함평균
+FROM 	EMPLOYEE
+WHERE	DEPT_ID IN ('50','90') OR DEPT_ID IS NULL;
+
+
+[COUNT]
+
+SELECT  COUNT(BONUS_PCT)
+FROM 	EMPLOYEE;
+
+
+[MIN MAX]
+
+SELECT 	MIN(SALARY), MAX(SALARY)
+FROM	EMPLOYEE;
+
+
+[GROUP BY] ~별(그룹짓는다) 
+
+부서별 급여평균
+SELECT 	DEPT_ID AS 부서,
+		ROUND(AVG(SALARY),-4)AS 평균급여
+FROM 	EMPLOYEE
+GROUP BY DEPT_ID
+ORDER BY 1;
+
+SELECT 	DECODE(SUBSTR(EMP_NO,8,1),'1','남','3','남','여') AS 성별,
+		ROUND(AVG(SALARY),-4) AS 평균급여
+FROM 	EMPLOYEE
+GROUP BY DECODE(SUBSTR(EMP_NO,8,1),'1','남','3','남','여')
+ORDER BY 2;
+
+
+GROUP BY 에 명세된 컬럼은 SELECT 에 가능 , 안나온건 불가
+BUT 그룹함수는가능하다.
+
+
+SELECT  EMP_NAME , DEPT_ID , COUNT(*)
+FROM	EMPLOYEE
+GROUP BY DEPT_ID;
+이건 오류가난다.
+
+SELECT	EMP_NAME, DEPT_ID,COUNT(*)
+FROM 	EMPLOYEE
+GROUP BY EMP_NAME,DEPT_ID;
+이건 되지만 이름때문에 (이름이다달라서) 티가나지않는다.  
+별칭못쓴다.
+
+GROUP BY 의 조건은 WHERE 이 아닌 HAVING 으로 만든다.
+
+
+[HAVING]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

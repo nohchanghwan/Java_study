@@ -1,0 +1,24 @@
+
+public class ControlExam {
+	
+	
+	
+	public boolean isAdult(int age){
+		boolean flag = false;
+		if(age>20){
+			flag=true;
+		}
+		return flag;
+	}
+	
+	public String grade(int mygrade){
+		if(mygrade>=90){
+			return "A입니다";
+		}else if(mygrade>=80){
+			return "B입니다";
+		}else if(mygrade>=70){
+			return "C입니다";
+		}else
+			return "F입니다";
+	}
+}

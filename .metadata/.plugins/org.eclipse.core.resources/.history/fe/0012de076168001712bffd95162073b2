@@ -1,0 +1,14 @@
+
+
+public class LoopExam {
+	
+	public static long evenSum(int start, int end){
+		int result = 0;
+		for(int i=start ; i<=end ; i++){
+			if(i%2 == 0){
+				result+=i;
+			}
+		}
+		return result;
+	}
+}

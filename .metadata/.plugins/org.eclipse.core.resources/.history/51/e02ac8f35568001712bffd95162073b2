@@ -1,0 +1,13 @@
+
+public class ControlExam {
+	
+	
+	
+	public boolean isAdult(int age){
+		boolean flag = false;
+		
+		
+		return flag;
+		
+	}
+}

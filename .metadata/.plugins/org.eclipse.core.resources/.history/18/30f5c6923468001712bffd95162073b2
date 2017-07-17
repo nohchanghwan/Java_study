@@ -1,0 +1,20 @@
+
+public class GreetingMain {
+
+	public static void main(String[] args) {		
+	//메인메소드가있으면 실행이가능 (없으면 컴파일만가능)
+	
+	System.out.println("처음 만나는 자바세상");  //'sysout' + ctrl + spacebar 
+	//실행은 ctrl + F11
+	int age = 20 ;
+	System.out.println(age);
+	double weight = 64.9;
+	System.out.println(weight);
+	char gender ='M'; // 
+	System.out.println(gender);
+	boolean isMarrigae = true; 
+	System.out.println(isMarrigae);
+	string name = "노창환";
+	System.out.println(name);
+	}
+}

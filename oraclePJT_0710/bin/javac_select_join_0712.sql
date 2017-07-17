@@ -1,0 +1,283 @@
+
+--0712
+--주요그룹함수
+
+[SUM]
+
+SELECT 	SUM(SALARY),SUM(DISTINCT SALARY)
+FROM 	EMPLOYEE
+WHERE 	DEPT_ID = '50' OR DEPT_ID IS NULL;
+
+
+[AVG]
+
+SELECT 	AVG(BONUS_PCT) AS 기본평균,
+		AVG(DISTINCT BONUS_PCT) AS 중복제거평균,
+		AVG(NVL(BONUS_PCT,0)) AS NULL포함평균
+FROM 	EMPLOYEE
+WHERE	DEPT_ID IN ('50','90') OR DEPT_ID IS NULL;
+
+
+[COUNT]
+
+SELECT  COUNT(BONUS_PCT)
+FROM 	EMPLOYEE;
+
+
+[MIN MAX]
+
+SELECT 	MIN(SALARY), MAX(SALARY)
+FROM	EMPLOYEE;
+
+
+[GROUP BY] ~별(그룹짓는다) 
+
+부서별 급여평균
+SELECT 	DEPT_ID AS 부서,
+		ROUND(AVG(SALARY),-4)AS 평균급여
+FROM 	EMPLOYEE
+GROUP BY DEPT_ID
+ORDER BY 1;
+
+SELECT 	DECODE(SUBSTR(EMP_NO,8,1),'1','남','3','남','여') AS 성별,
+		ROUND(AVG(SALARY),-4) AS 평균급여
+FROM 	EMPLOYEE
+GROUP BY DECODE(SUBSTR(EMP_NO,8,1),'1','남','3','남','여')
+ORDER BY 2;
+
+
+GROUP BY 에 명세된 컬럼은 SELECT 에 가능 , 안나온건 불가
+BUT 그룹함수는가능하다.
+
+
+SELECT  EMP_NAME , DEPT_ID , COUNT(*)
+FROM	EMPLOYEE
+GROUP BY DEPT_ID;
+이건 오류가난다.
+
+SELECT	EMP_NAME, DEPT_ID,COUNT(*)
+FROM 	EMPLOYEE
+GROUP BY ROLLUP(EMP_NAME,DEPT_ID);
+이건 되지만 이름때문에 (이름이다달라서) 티가나지않는다.  
+별칭못쓴다.
+
+GROUP BY 의 조건은 WHERE 이 아닌 HAVING 으로 만든다.
+
+
+[HAVING]
+
+부서별 급여총합을 골라 계산결과가 9000000 이상인경우만 선택
+SELECT	DEPT_ID , SUM(SALARY)
+FROM	EMPLOYEE
+GROUP BY DEPT_ID
+HAVING	SUM(SALARY) > 9000000;
+
+조건을 WHERE로하면 에러가난다
+SELECT 	DEPT_ID , SUM(SALARY)
+FROM	EMPLOYEE
+WHERE	SUM(SALARY) > 9000000
+GROUP BY DEPT_ID;
+
+--9
+
+SELECT ROUND(AVG(POINT),1) AS 평점 
+FROM TB_GRADE
+WHERE  STUDENT_NO = 'A517178';
+
+
+--10
+
+SELECT 	DEPARTMENT_NO AS 학과번호 , COUNT(*) AS "학생수(명)"
+FROM	TB_STUDENT
+GROUP BY DEPARTMENT_NO
+ORDER BY 1;
+
+
+
+[JOIN]
+
+서로 연관되고 다른테이블에 존재하는 컬럼들을 한번에 조회하기 위해 사용되는 
+대표적인 기법
+
+
+1. USING 과 ON 의 차이는 동일한 컬럼명일경우 USING (부모의 외래키와 자식의 기본키이름이 같을때)
+   동일하지 않아서 조건식을 달경우 ON 사용.
+2. GROUP BY 에서 명세된것만 SELECT 에서정의될수있다.
+
+
+ -- EQU-JOIN
+SELECT 	EMP_NAME , DEPT_NAME
+FROM 	EMPLOYEE E,
+		DEPARTMENT D
+WHERE	E.DEPT_ID = D.DEPT_ID;
+
+ -- NON-EQU-JOIN
+SELECT 	EMP_NAME, SALARY , SLEVEL AS 급여등급
+FROM 	EMPLOYEE E , SAL_GRADE s
+WHERE	SALARY BETWEEN LOWEST AND HIGHEST;
+
+SELECT 	EMP_NAME,DEPT_NAME, LOC_DESCRIBE,COUNTRY_NAME,SLEVEL
+FROM 	EMPLOYEE
+JOIN	DEPARTMENT USING(DEPT_ID)
+JOIN	LOCATION 	ON(LOCATION_ID = LOC_ID)
+JOIN 	COUNTRY		USING(COUNTRY_ID)
+JOIN	SAL_GRADE	ON(SALARY BETWEEN LOWEST AND HIGHEST);
+
+
+ --OUTER 조인 (모든구문을~)
+ 
+SELECT 	EMP_NAME , DEPT_NAME
+FROM 	EMPLOYEE
+LEFT	JOIN DEPARTMENT USING (DEPT_ID)
+ORDER	BY 1;
+
+
+ --SELF 조인
+1. 한테이블을 두번조인 / 테이블 별칭을 사용해야함
+
+SELECT 	E.EMP_NAME AS 직원,
+		M.EMP_NAME AS 관리자,
+		S.EMP_NAME AS 슈퍼바이저		
+FROM	EMPLOYEE E
+
+JOIN	EMPLOYEE M ON(E.MGR_ID = M.EMP_ID)
+JOIN	EMPLOYEE S ON(M.MGR_ID = S.EMP_ID)
+ORDER BY 1;
+
+
+
+
+
+--서브쿼리
+직급같고 월급많은
+
+SELECT *
+FROM EMPLOYEE
+WHERE JOB_ID = ( 	SELECT JOB_ID
+					FROM	EMPLOYEE
+					WHERE 	EMP_NAME='나승원' 
+				)
+AND	SALARY > (		SELECT SALARY
+					FROM	EMPLOYEE
+					WHERE 	EMP_NAME='나승원' 
+				);
+				
+
+급여가 제일적은 회사원찾기 (단일행 서브쿼리)
+SELECT 	*
+FROM	EMPLOYEE
+WHERE	SALARY = (	SELECT MIN(SALARY)
+					FROM EMPLOYEE
+				 );
+
+
+
+--HAVING 에서의 서브쿼리
+가장 높은 연봉을 받는 ~
+				 
+SELECT 	DEPT_NAME,
+		SUM(SALARY)
+FROM	EMPLOYEE
+LEFT  JOIN DEPARTMENT USING(DEPT_ID)
+GROUP BY DEPT_ID, DEPT_NAME
+HAVING 	SUM(SALARY) = (SELECT MAX(SUM(SALARY))
+					  FROM	EMPLOYEE
+					  GROUP BY DEPT_ID);
+ 
+
+최대와 최소 사이의 값을 말하는  ANY
+최대보다 크고 최소보다작다	    
+
+<ANY  : 비교대상중 최대보다작다 
+>ANY  :	비교대상중 최소보다크다			  
+=<ANY : 				  
+
+
+
+과장직급보다 급여가 많은 대리직급 조회
+
+SELECT 	EMP_NAME,SALARY,JOB_TITLE
+FROM	EMPLOYEE
+JOIN	JOB USING (JOB_ID)
+WHERE	JOB_TITLE = '대리'
+AND		SALARY > ANY
+				(	SELECT  SALARY
+					FROM	EMPLOYEE
+					JOIN	JOB USING(JOB_ID)
+					WHERE	JOB_TITLE ='과장');
+					
+					
+--서브쿼리문제****************************************************					
+
+1. 직급별 평균급여
+
+SELECT	JOB_TITLE,TRUNC(AVG(SALARY),-5)
+FROM	EMPLOYEE
+JOIN	JOB USING(JOB_ID)
+GROUP BY	JOB_ID, JOB_TITLE ;
+					
+2. 사원정보 사원이름 직급이름 급여
+SELECT EMP_NAME,JOB_TITLE,SALARY
+FROM	EMPLOYEE
+JOIN	JOB USING	(JOB_ID)
+
+3. 둘을합쳐
+
+SELECT EMP_NAME,JOB_TITLE,SALARY
+FROM	EMPLOYEE
+JOIN	JOB USING (JOB_ID)
+WHERE	(JOB_ID,SALARY) IN (	SELECT	JOB_ID,TRUNC(AVG(SALARY),-5)
+					FROM	EMPLOYEE
+					GROUP BY	JOB_ID );
+					
+-> 직급갯수만큼의 값이나온다					
+-> 현재는 평균급여는맞지만 해당계급에 맞는 급여를받는사람이 나오지 X
+-> 현재는 서브쿼리에서 오로지 평균급여만 리턴한다.
+-> ID도 같이 리턴시켜서 다중열 다중행으로 리턴
+-> 이제 메인쿼리에서 JOB_ID를 추가해서 대응이되게끔 2:2 로만들어서 받으면
+-> 직급과 금액이 맞게 결과가나온다.
+
+IN을 이용해서 하나하나씩 비교해서 값을 추출할수있다.
+
+
+--서브쿼리문제2 FROM절의 서브쿼리 = INLINE뷰*************************************					
+서브쿼리를 FROM절에 쓰면 버츄얼테이블이 생겨서 실제 테이블처럼 조인할수있다.
+
+SELECT	EMP_NAME,
+		JOB_TITLE,
+		SALARY		
+FROM	(SELECT JOB_ID,
+				TRUNC(AVG(SALARY),-5) AS JOBAVG
+		 FROM	EMPLOYEE
+		 GROUP BY JOB_ID) V
+JOIN	EMPLOYEE E ON 
+		(JOBAVG = SALARY AND NVL(E.JOB_ID,' ') = NVL(V.JOB_ID,' '))
+LEFT	JOIN JOB J ON (E.JOB_ID = J.JOB_ID)
+ORDER BY E.JOB_ID;
+
+
+
+--상관관계서브쿼리
+
+SELECT	EMP_NAME,
+		JOB_TITLE,
+		SALARY
+FROM	EMPLOYEE E
+LEFT JOIN JOB J ON (E.JOB_ID = J.JOB_ID)
+WHERE	SALARY = (SELECT TRUNC(AVG(SALARY),-5)
+				  FROM	EMPLOYEE
+				  WHERE	NVL(JOB_ID,' ') = NVL(E.JOB_ID,' '))
+
+ORDER BY	E.JOB_ID;
+
+
+
+
+
+
+
+
+
+
+
+
