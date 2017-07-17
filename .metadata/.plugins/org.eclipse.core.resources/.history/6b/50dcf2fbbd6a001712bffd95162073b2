@@ -1,0 +1,28 @@
+import com.oop.Student;
+
+import model.vo.PersonVO;
+
+public class StudentMain {
+
+	public static void main(String[] args) {
+	
+	Student [] stuAry = new Student[3];
+	Student stu = new Student("ȫ�浿",15,170,80);
+	Student stu2 = new Student("ȫ�浿",15,170,80);
+	Student stu3 = new Student("ȫ�浿",15,170,80);
+	
+	int idx = 0;
+	stuAry[idx++] = stu;
+	stuAry[idx++] = stu2;
+	stuAry[idx++] = stu3;
+	
+	for(int i=0;i<stuAry.length;i++){
+		Student person = stuAry[i];
+		if(person == null){
+			break;
+			}
+		System.out.println(person.studentInfo());
+		}
+	}
+
+}

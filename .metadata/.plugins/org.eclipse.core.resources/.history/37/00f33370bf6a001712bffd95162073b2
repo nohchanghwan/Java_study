@@ -1,0 +1,40 @@
+import com.oop.Student;
+
+public class StudentMain {
+
+	public static void main(String[] args) {
+	
+	Student [] stuAry = new Student[3];
+	Student stu = new Student("홍길동",15,170,80);
+	Student stu2 = new Student("한사람",13,180,70);
+	Student stu3 = new Student("홍길동",16,175,65);
+	
+	int idx = 0;
+	stuAry[idx++] = stu;
+	stuAry[idx++] = stu2;
+	stuAry[idx++] = stu3;   	
+	System.out.println("이름	 나이    신장   몸무게");
+		for(int i=0;i<stuAry.length;i++){
+			Student person = stuAry[i];
+			if(person == null){
+				break;
+				}
+			System.out.println(person.studentInfo());
+		}
+	
+	double ageAvg= 0;
+	double heightAvg= 0;
+	double weightAvg= 0;
+	
+		for(int i=0;i<stuAry.length;i++){
+			Student person = stuAry[i];
+			if(person == null){
+				break;
+				}
+			System.out.println(person.getAge());
+			
+		}
+	}
+	
+
+}
