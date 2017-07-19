@@ -1,0 +1,10 @@
+package tv.model.vo;
+
+public class SamsungTV {
+	public void powerOn(){
+		System.out.println("SamsungTv PowerON");
+	}
+	public void powerOff(){
+		System.out.println("SamsungTv PowerOff");
+	}
+}

@@ -1,0 +1,18 @@
+package com.emp;
+
+public class Sales extends Employee implements Bonus {
+
+
+
+	@Override
+	public double tax() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void incentive(int pay) {
+		// TODO Auto-generated method stub
+		
+	}
+}

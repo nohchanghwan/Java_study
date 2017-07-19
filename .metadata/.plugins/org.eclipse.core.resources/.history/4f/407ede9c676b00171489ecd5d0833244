@@ -1,0 +1,5 @@
+package hip.model.vo;
+
+public class Cruise {
+
+}

@@ -4,10 +4,10 @@ public class StudentMain {
 
 	public static void main(String[] args) {
 	
-	Student [] stuAry = new Student[3];
-	Student stu = new Student("홍길동",15,170,80);
-	Student stu2 = new Student("한사람",13,180,70);
-	Student stu3 = new Student("임꺽정",16,175,65);
+	Human [] stuAry = new Human[3];
+	Studentt stu = new Studentt("홍길동",15,170,80);
+	Studentt stu2 = new Studentt("한사람",13,180,70);
+	Studentt stu3 = new Studentt("임꺽정",16,175,65);
 	
 	int idx = 0;
 	stuAry[idx++] = stu;
@@ -15,7 +15,7 @@ public class StudentMain {
 	stuAry[idx++] = stu3;   	
 	System.out.println("이름	 나이    신장   몸무게");
 		for(int i=0;i<stuAry.length;i++){
-			Student person = stuAry[i];
+			Studentt person = stuAry[i];
 			if(person == null){
 				break;
 				}

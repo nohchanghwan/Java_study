@@ -1,0 +1,5 @@
+package tv.model.vo;
+
+public class SamsungTV {
+
+}

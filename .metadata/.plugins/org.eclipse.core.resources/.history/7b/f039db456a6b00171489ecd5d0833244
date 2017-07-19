@@ -1,0 +1,23 @@
+package hip.model.vo;
+
+public class Cruise extends Ship {
+
+	public Cruise() {
+		super();
+	}
+
+	public Cruise(String shipName, int fuelTank) {
+		super(shipName, fuelTank);
+	}
+
+	@Override
+	public void sail(int dist) {
+		setFuelTank(getFuelTank() - 13);
+	}
+
+	@Override
+	public void refuel(int fuel) {
+		setFuelTank(getFuelTank() + 8 );
+	}
+
+}

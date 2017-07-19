@@ -1,0 +1,26 @@
+package hip.model.vo;
+
+public class Boat extends Ship{
+
+	public Boat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Boat(String shipName, int fuelTank) {
+		super(shipName, fuelTank);
+	}
+	@Override
+	public void sail(int dist) {
+		for(int i =0; i<dist;i++){
+		setFuelTank(getFuelTank() - 10); 
+		}
+	}
+	@Override
+	public void refuel(int fuel) {
+		for(int i =0; i<fuel;i++){
+		setFuelTank(getFuelTank() + 10);
+		}
+	}
+	
+
+}
