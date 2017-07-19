@@ -1,0 +1,5 @@
+package exception.util;
+
+public class UserException {
+
+}

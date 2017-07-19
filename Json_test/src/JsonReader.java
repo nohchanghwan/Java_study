@@ -23,22 +23,18 @@ public class JsonReader {
 	  public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 	    InputStream is = new URL(url).openStream();
 	    try {
-	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-	      //
-	      
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));	      
 	      String jsonText = readAll(rd);
 	      JSONObject json = new JSONObject(jsonText);
-	      
 
-	      
-	      
 	      return json;
-	    } finally {
+	    }/*catch(Exception e){
+	    	e.setStackTrace(null);
+	    }*/
+	    finally {
 	      is.close();
 	    }
 	  }
-	  
-	  
 	  
 	  public static void main(String[] args) throws IOException, JSONException {
 	    JSONObject json = readJsonFromUrl("https://blockchain.info/ko/ticker");

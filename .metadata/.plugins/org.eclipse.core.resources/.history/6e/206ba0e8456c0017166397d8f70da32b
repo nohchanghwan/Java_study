@@ -1,0 +1,71 @@
+package account;
+
+public class Account {
+	
+	private String account ;
+	private double balance ;
+	private double interesRate ;
+	Exception ex = new Exception();
+
+	public Account() {
+		super();
+	}
+
+	public Account(String account, double balance, double interesRate) {
+		super();
+		this.account = account;
+		this.balance = balance;
+		this.interesRate = interesRate;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public double getInteresRate() {
+		return interesRate;
+	}
+
+	public void setInteresRate(double interesRate) {
+		this.interesRate = interesRate;
+	}
+	
+	public double calculateInterest(){
+		
+		return balance*interesRate;
+	}
+	public void deposit(double money){
+		try{
+			if(money<0){
+				
+			}else{
+				balance +=money;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			System.out.println("¿¡·¯~~~");
+		}
+		
+	}
+	public void withdrow(double money){
+	}
+
+	@Override
+	public String toString() {
+		return  account + "\t" + balance + "\t" + interesRate ;
+	}
+	
+}
