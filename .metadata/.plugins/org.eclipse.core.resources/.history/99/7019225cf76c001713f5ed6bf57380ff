@@ -1,0 +1,64 @@
+package board.model.sql;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+
+import board.model.vo.BoardVO;
+
+public class BoardDao {
+	// 이건 JDBC를 위한 클래스
+	
+	public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
+	public static final String URL = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	public static final String USER = "hr";
+	public static final String PASSWD = "hr"; 
+	
+	public BoardDao(){
+		try {
+			Class.forName(DRIVER);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	////////////////////////글 등록
+	public int insertRow(BoardVO board){
+		
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String insertSQL = "INSERT INTO USER_TBL2 VALUES(BOARD_TBL,?,?,?,SYSDATE,0)";
+		try{
+			conn = DriverManager.getConnection(URL,USER,PASSWD);
+			pstmt = conn.prepareStatement(insertSQL);
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getContent());
+			pstmt.setString(3, board.getWriter());
+			result = pstmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
+	
+	public int updateRow(BoardVO board){
+		return 0;
+	}
+	public int deleteRow(BoardVO board){
+		return 0;
+	}
+	public ArrayList<BoardVO> listRow(){
+		return null;
+	}
+	
+	
+	
+}

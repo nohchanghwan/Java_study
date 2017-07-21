@@ -1,0 +1,19 @@
+package board.view;
+
+import board.ctrl.BoardCtrl;
+
+public class BoardView {
+
+	private BoardCtrl ctrl;
+	public BoardView(){
+		ctrl = new BoardCtrl();
+	}
+	public void menu() {
+		while(true)
+		System.out.println("1.전체출력 2.읽기 3.입력 4.수정");
+		System.out.println("번호 선텍 :");
+		Scanner scan = new Sanner(System.in);
+		in number = scan.nextInt();
+	}
+
+}

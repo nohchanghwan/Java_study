@@ -19,7 +19,7 @@ public class AccountMain {
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}finally{
-		}	
+		 }	
 		System.out.println("ÀÌÀÚ"+ac.getInteresRate());
 	}
 }
