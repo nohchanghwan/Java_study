@@ -65,6 +65,7 @@ public class BoardView {
 		System.out.print("키워드입력 :");
 		Scanner scan = new Scanner(System.in);
 		String keyword = scan.nextLine();
+		
 		BoardVO board = new BoardVO();
 		board.setTitle(keyword);
 		ArrayList<BoardVO> list = ctrl.search(board);

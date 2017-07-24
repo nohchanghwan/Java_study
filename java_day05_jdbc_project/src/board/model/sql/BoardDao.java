@@ -41,7 +41,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}finally{
 			try{
-				
+				conn.close();
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -66,7 +66,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}finally{
 			try{
-				
+				conn.close();
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -87,7 +87,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}finally{
 			try{
-				
+				conn.close();
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -125,7 +125,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}finally{
 			try{
-				
+				conn.close();
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -162,7 +162,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}finally{
 			try{
-				
+				conn.close();
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -201,7 +201,7 @@ public class BoardDao {
 			e.printStackTrace();
 		}finally{
 			try{
-				
+				conn.close();
 			}catch(Exception e){
 				e.printStackTrace();
 			}

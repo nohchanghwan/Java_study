@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<div align="center" style="margin-top:30px">
+	  창환이의 웹사이트
+	</div>
+	<a href="./test.do?id=nochang">서블릿과 통신</a>
+	<div align="right">
+	
+	</div>
+</body>
+</html>

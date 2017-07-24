@@ -15,7 +15,7 @@ public class BoardService {
 	public int insert(BoardVO board){
 		return dao.insertRow(board);
 	}
-	public int update(BoardVO board){
+	public int update(BoardVO board){ 
 		return dao.updateRow(board);
 	}
 	public int delete(BoardVO board){

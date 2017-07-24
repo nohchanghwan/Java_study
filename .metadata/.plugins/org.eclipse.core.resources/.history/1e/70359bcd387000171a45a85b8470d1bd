@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import ="board.model.vo.BoardVO" %>
+<%@ page import = "java.util.ArrayList" %>
+<%--
+<%@ 태그명 속성 ="" %> --지시자태그
+<%! 변수,메서드 %>    --선언문태그
+<%doGet(), doPost()%> 스크립틀릿 태그
+<%= %>                표현식태그(System.out.println()) + ; 넣으면안댐
+--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>번호</td>
+			<td>제목</td>
+			<td>작성자</td>
+			<td>등록일</td>
+		</tr>
+	</table>
+</body>
+</html>

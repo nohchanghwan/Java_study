@@ -49,4 +49,5 @@
 <fullyQualifiedTypeName name="board.model.vo.BoardVO"/>
 <fullyQualifiedTypeName name="board.model.sql.BoardDao"/>
 <fullyQualifiedTypeName name="board.service.BoardService"/>
+<fullyQualifiedTypeName name="javax.security.sasl.SaslClient"/>
 </qualifiedTypeNameHistroy>
