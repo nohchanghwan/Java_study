@@ -1,0 +1,36 @@
+package board.ctrl;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import board.model.vo.BoardVO;
+import board.service.BoardService;
+import ctrl.util.command;
+import ctrl.view.ModelAndView;
+
+public class BoardRead implements command {
+	private BoardService service;
+	public BoardRead(){
+		service = new BoardService();
+	}
+	
+	@Override
+	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("ctrl read");
+		request.setCharacterEncoding("EUC-KR");
+		BoardVO board = new BoardVO();
+		BoardVO flag = service.read(board);
+		ModelAndView mv = new ModelAndView();
+		if(flag != null ){
+			mv.setPath("read.do");
+			mv.setSend(false);
+		}
+		System.out.println("test2");
+		return mv ;
+			}
+
+}

@@ -1,5 +1,6 @@
 
 --1¹ø
+select * from USRR_TBL;
 
 CREATE TABLE CUSTOMERS(
 		CNO		NUMBER(5) PRIMARY KEY,

@@ -1,0 +1,5 @@
+package user.ctrl;
+
+public class LogoutCtrl {
+
+}

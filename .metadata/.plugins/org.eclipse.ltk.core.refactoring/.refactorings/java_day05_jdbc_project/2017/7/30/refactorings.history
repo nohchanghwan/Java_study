@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 packages to &apos;java_day07_0724_frameworkWEB/src&apos;&#x0D;&#x0A;- Original project: &apos;java_day05_jdbc_project&apos;&#x0D;&#x0A;- Destination element: &apos;java_day07_0724_frameworkWEB/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     java_day05_jdbc_project/src/board.model.sql&#x0D;&#x0A;     java_day05_jdbc_project/src/board.service" description="Copy packages" destination="=java_day07_0724_frameworkWEB/src" element1="/src&lt;board.model.sql" element2="/src&lt;board.service" flags="589830" fragments="2" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1500948500556" version="1.0"/>
+</session>

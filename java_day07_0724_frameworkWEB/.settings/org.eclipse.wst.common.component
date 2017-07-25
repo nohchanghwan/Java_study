@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="java_day07_0724_frameworkWEB">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/" source-path="/webapp"/>
+        <property name="java-output-path" value="/java_day07_0724_frameworkWEB/build/classes"/>
+        <property name="context-root" value="java_day07_0724_frameworkWEB"/>
+    </wb-module>
+</project-modules>
