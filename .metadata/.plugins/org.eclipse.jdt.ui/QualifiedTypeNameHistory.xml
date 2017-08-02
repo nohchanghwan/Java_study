@@ -46,8 +46,13 @@
 <fullyQualifiedTypeName name="board.view.BoardView"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="board.model.vo.BoardVO"/>
 <fullyQualifiedTypeName name="board.model.sql.BoardDao"/>
-<fullyQualifiedTypeName name="board.service.BoardService"/>
 <fullyQualifiedTypeName name="javax.security.sasl.SaslClient"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.sun.corba.se.spi.protocol.RequestDispatcherRegistry"/>
+<fullyQualifiedTypeName name="java.lang.ProcessBuilder.Redirect"/>
+<fullyQualifiedTypeName name="ctrl.util.command"/>
+<fullyQualifiedTypeName name="board.service.BoardService"/>
+<fullyQualifiedTypeName name="board.model.vo.BoardVO"/>
+<fullyQualifiedTypeName name="ctrl.view.ModelAndView"/>
 </qualifiedTypeNameHistroy>

@@ -19,31 +19,28 @@ public class JsonReader {
 	    }
 	    return sb.toString();
 	  }
-
 	  public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 	    InputStream is = new URL(url).openStream();
 	    try {
 	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));	      
 	      String jsonText = readAll(rd);
 	      JSONObject json = new JSONObject(jsonText);
-
 	      return json;
 	    }/*catch(Exception e){
-	    	e.setStackTrace(null);
-	    }*/
+	    	e.setStackTrace(null); 
+	    }*/ 
 	    finally {
 	      is.close();
 	    }
 	  }
-	  
 	  public static void main(String[] args) throws IOException, JSONException {
 	    JSONObject json = readJsonFromUrl("https://blockchain.info/ko/ticker");
-	    System.out.println(json.toString());
-	    System.out.println("----------------------------------------------------------------------");
-	    System.out.println("한국:"+json.get("KRW"));
-	    System.out.println("달러:"+json.get("USD"));
-	    System.out.println("일본:"+json.get("JPY"));
-	    System.out.println("유로:"+json.get("EUR"));
-	    System.out.println("중꿔:"+json.get("CHF"));
-	  }
+	    JSONObject KR = (JSONObject)json.get("KRW");
+	   
+	    System.out.println("비트코인 전체:"+json.toString()); 
+	    System.out.println("한국화폐 환전:"+KR);
+	    System.out.println("살때: "+KR.get("buy")+" 원");
+	    System.out.println("팔때: "+KR.get("sell")+" 원");  
 	}
+	  
+}

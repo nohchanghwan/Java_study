@@ -18,29 +18,27 @@ public class BoardUpdate implements command{
 	}
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		throws ServletException, IOException {
 		System.out.println("update ctrl");
 		request.setCharacterEncoding("EUC-KR"); // ÀÌ·¡¾ßÇÑ±Û¾È±úÁü
 
 		int seq = Integer.parseInt(request.getParameter("seq"));
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String 	title = request.getParameter("title");
+		String 	content = request.getParameter("content");
 		
 		BoardVO board = new BoardVO();
 		board.setSeq(seq);
 		board.setTitle(title);
-		board.setContent(content);
-
+		board.setContent(content);		
 		int flag = service.update(board);
 		request.setAttribute("board", flag);
 
 		ModelAndView mv = new ModelAndView();
 		if(flag!=0){
-		mv.setPath("list.do");
-		mv.setSend(false);
+			mv.setPath("list.do");
+			mv.setSend(false);
 		}else{
 		}
 		return mv;
-
 	}
 }
