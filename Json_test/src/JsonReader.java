@@ -33,14 +33,20 @@ public class JsonReader {
 	      is.close();
 	    }
 	  }
-	  public static void main(String[] args) throws IOException, JSONException {
+	  public static double main(String[] args) throws IOException, JSONException {
 	    JSONObject json = readJsonFromUrl("https://blockchain.info/ko/ticker");
 	    JSONObject KR = (JSONObject)json.get("KRW");
 	   
 	    System.out.println("비트코인 전체:"+json.toString()); 
 	    System.out.println("한국화폐 환전:"+KR);
 	    System.out.println("살때: "+KR.get("buy")+" 원");
-	    System.out.println("팔때: "+KR.get("sell")+" 원");  
+	    System.out.println("팔때: "+KR.get("sell")+" 원");
+	    double buy = (double) KR.get("buy");
+	    double sell = (double) KR.get("sell");
+	    System.out.println(buy);
+	    System.out.println(sell);
+	    
+	    return sell;
+	    
 	}
-	  
 }

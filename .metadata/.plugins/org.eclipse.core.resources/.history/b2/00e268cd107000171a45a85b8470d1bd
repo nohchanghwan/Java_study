@@ -1,7 +1,0 @@
-package board.ctrl;
-
-public class BoardList {
-	public void list(){
-		System.out.println("list");
-	}
-}

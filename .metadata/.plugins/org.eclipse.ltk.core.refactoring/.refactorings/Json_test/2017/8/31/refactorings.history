@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Json_test/src/dropthebit&apos; to &apos;dropthebit.sql&apos;" description="Rename resource &apos;dropthebit&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/dropthebit" name="dropthebit.sql" stamp="1501906363348" updateReferences="true"/>
+</session>

@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="NEXTVAL"/>
+			<item value="desc"/>
+			<item value="asc"/>
 			<item value="where"/>
 			<item value="and"/>
 			<item value="like"/>
 			<item value="SELECT&#x09;EMP_NAME,PHONE"/>
 			<item value="delete"/>
-			<item value="nOutput"/>
-			<item value="AVG"/>
-			<item value="GROUP"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -1,8 +1,0 @@
-package board.ctrl;
-
-import board.ctrl.util.command;
-
-public class BoardList implements command{
-	
-}
-

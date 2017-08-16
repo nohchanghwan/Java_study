@@ -1,7 +1,0 @@
-package board.ctrl;
-
-public class BoardInsert {
-	public void insert(){
-		System.out.println("insert");
-	}
-}

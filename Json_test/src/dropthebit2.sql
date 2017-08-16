@@ -1,0 +1,164 @@
+
+CREATE TABLE USER_BC(
+      USER_ID   VARCHAR2(30) PRIMARY KEY,
+      PWD         VARCHAR2(30) NOT NULL,
+      EMAIL      VARCHAR2(50) NOT NULL,
+      DEPOSIT   NUMBER(20)    DEFAULT 0
+      );
+
+  
+CREATE TABLE WALLET(°Å·¡)(
+      WALLET_IDX   NUMBER(20) PRIMARY KEY,
+      VM_IDX         NUMBER(20) NOT NULL REFERENCES VM(VM_IDX),
+      PRICE         NUMBER(20) NOT NULL,
+      AMOUNT         NUMBER(20) NOT NULL,
+      SUM            NUMBER(20) NOT NULL,
+      USER_ID      VARCHAR(30) NOT NULL REFERENCES USER_BC(USER_ID)       
+      ); 
+     
+
+
+CREATE TABLE VM(
+   VM_IDX         NUMBER(10) PRIMARY KEY,
+   VM_P            NUMBER(10) NOT NULL
+);
+
+CREATE TABLE RESULT(
+      USER_ID         VARCHAR2(30)  REFERENCES USER_BC(USER_ID), 
+      AMOUNT_SUM      NUMBER(20),
+      PRE_VAL         NUMBER(20),
+      C_VAL            NUMBER(20),
+      RATE               NUMBER(20), 
+      WALLET_IDX      NUMBER(20)  REFERENCES WALLET(WALLET_IDX),
+      PRIMARY KEY(USER_ID)
+      );
+
+
+SELECT *
+FROM wallet;
+SELECT *
+FROM VM;
+
+DELETE
+
+SELECT *
+FROM RESULT;
+
+SELECT *
+FROM USER_BC;
+
+create sequence WALLET_IDX start with 1 increment BY 1 maxvalue 10000
+drop sequence WALLET_IDX;
+
+INSERT INTO USER_BC VALUES ('admin','0000','admin',1000);
+INSERT INTO USER_BC VALUES ('bdmin','0000','admin',1000);
+INSERT INTO VM VALUES (0,50);
+INSERT INTO WALLET VALUES (5,0,50,2,100,'admin');
+INSERT INTO WALLET VALUES (WALLET_IDX.NEXTVAL,0,50,2,200,'admin');
+INSERT INTO RESULT VALUES ('admin',0,0,0,0,1);
+UPDATE USER_BC SET DEPOSIT = 1000000 WHERE	USER_ID = 'admin' ;
+DELETE FROM WALLET WHERE WALLET_IDX = 0;
+DROP TABLE USER_BC CASCADE CONSTRAINT
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+DROP TABLE WALLET CASCADE CONSTRAINT;
+DROP TABLE VM CASCADE CONSTRAINT;
+DROP TABLE USER_BC CASCADE CONSTRAINT;
+DROP TABLE RESULT CASCADE CONSTRAINT;
+drop sequence WALLET_IDX;  
+
+
+CREATE TABLE USER_BC(
+      USER_ID   VARCHAR2(30) PRIMARY KEY,
+      PWD         VARCHAR2(30) NOT NULL,
+      EMAIL      VARCHAR2(50) NOT NULL,
+      DEPOSIT   NUMBER(20)    DEFAULT 0
+      );
+CREATE TABLE VM(
+   VM_IDX         NUMBER(10) PRIMARY KEY,
+   VM_P            NUMBER(10) NOT NULL
+);
+      
+CREATE TABLE WALLET(
+      WALLET_IDX   NUMBER(20) PRIMARY KEY,
+      VM_IDX         NUMBER(20) NOT NULL REFERENCES VM(VM_IDX),
+      PRICE         NUMBER(20) NOT NULL,
+      AMOUNT         NUMBER(20) NOT NULL,
+      SUM            NUMBER(20) NOT NULL,
+      USER_ID      VARCHAR(30) NOT NULL REFERENCES USER_BC(USER_ID)       
+      );
+create sequence WALLET_IDX start with 1 increment BY 1;      
+
+CREATE TABLE RESULT(
+   RESULT_IDX      NUMBER(20) PRIMARY KEY,
+      USER_ID         VARCHAR2(30) REFERENCES USER_BC(USER_ID), 
+      AMOUNT_SUM      NUMBER(20) DEFAULT 0,
+      PRE_VAL         NUMBER(20) DEFAULT 0,
+      C_VAL            NUMBER(20) DEFAULT 0,
+      RATE               NUMBER(20) DEFAULT 0
+      );
+      
+create sequence RESULT_IDX start with 1 increment BY 1; 
+
+INSERT INTO VM VALUES (0,50);
+
+
+
+
+
+real final -------------------------------------------------------------------------
+
+
+
+DROP TABLE WALLET CASCADE CONSTRAINT;
+DROP TABLE VM CASCADE CONSTRAINT;
+DROP TABLE USER_BC CASCADE CONSTRAINT;
+DROP TABLE RESULT CASCADE CONSTRAINT;
+drop sequence WALLET_IDX;  
+drop sequence result_IDX;  
+
+
+CREATE TABLE USER_BC(
+      USER_ID   VARCHAR2(30) PRIMARY KEY,
+      PWD         VARCHAR2(30) NOT NULL,
+      EMAIL      VARCHAR2(50) NOT NULL,
+      DEPOSIT   NUMBER(38)    DEFAULT 0
+      );
+CREATE TABLE VM(
+   VM_IDX         NUMBER(10) PRIMARY KEY,
+   VM_P            NUMBER(10) NOT NULL
+);
+      
+CREATE TABLE WALLET(
+      WALLET_IDX   NUMBER(20) PRIMARY KEY,
+      VM_IDX         NUMBER(20) NOT NULL REFERENCES VM(VM_IDX),
+      PRICE         NUMBER(20) NOT NULL,
+      AMOUNT         NUMBER(10) NOT NULL,
+      SUM            NUMBER(38) NOT NULL,
+      USER_ID      VARCHAR(30) NOT NULL REFERENCES USER_BC(USER_ID)       
+      );
+create sequence WALLET_IDX start with 1 increment BY 1;      
+
+CREATE TABLE RESULT(
+   RESULT_IDX      NUMBER(20) PRIMARY KEY,
+      USER_ID         VARCHAR2(30) REFERENCES USER_BC(USER_ID), 
+      AMOUNT_SUM      NUMBER(38) DEFAULT 0,
+      PRE_VAL         NUMBER(38) DEFAULT 0,
+      C_VAL            NUMBER(38) DEFAULT 0,
+      RATE               NUMBER(20) DEFAULT 0
+      );
+      
+create sequence RESULT_IDX start with 1 increment BY 1; 
+
+INSERT INTO VM VALUES (0,50);
